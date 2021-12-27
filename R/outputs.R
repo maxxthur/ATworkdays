@@ -39,9 +39,9 @@ workdays <- function(Y, state_level = FALSE) {
       dplyr::anti_join(fixed_fed, by = "date") %>%
       dplyr::anti_join(eastern_ded_fed, by = "date")
 
-    fed_states <- federal_states_days(fed_wd$date)
+    states_days <- federal_states_days(fed_wd$date)
 
-    fed_states %>%
+    states_days %>%
       dplyr::anti_join(fixed_state, by = c("date", "level")) %>%
       dplyr::mutate(year = lubridate::year(date),
                     month = lubridate::month(date),
